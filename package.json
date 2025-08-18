@@ -1,0 +1,15 @@
+{
+  "name": "spaced-review-study-planner-api",
+  "version": "1.0.0",
+  "description": "REST API for spaced-review study planner scheduling app",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "node src/app.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "swagger-ui-express": "^4.6.3",
+    "uuid": "^9.0.0",
+    "dayjs": "^1.11.10"
+  }
+}
