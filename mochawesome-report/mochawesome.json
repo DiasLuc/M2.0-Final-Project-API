@@ -1,0 +1,158 @@
+{
+  "stats": {
+    "suites": 3,
+    "tests": 2,
+    "passes": 2,
+    "pending": 0,
+    "failures": 0,
+    "start": "2025-08-22T21:55:07.518Z",
+    "end": "2025-08-22T21:55:07.559Z",
+    "duration": 41,
+    "testsRegistered": 2,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "08d6e10a-1b68-443f-a41d-aac66b39a7e5",
+      "title": "",
+      "fullFile": "/Users/lucas/workspace/github.com/Mentoria Júlio de Lima 2.0/M2.0-Final-Project-API/test/topics.test.js",
+      "file": "/test/topics.test.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "d6ea8b94-1459-4d52-8cc7-db15387808b2",
+          "title": "Topics",
+          "fullFile": "/Users/lucas/workspace/github.com/Mentoria Júlio de Lima 2.0/M2.0-Final-Project-API/test/topics.test.js",
+          "file": "/test/topics.test.js",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [],
+          "suites": [
+            {
+              "uuid": "cdc2c981-357f-4c66-a5f8-8baa08c64aae",
+              "title": "POST /topics",
+              "fullFile": "/Users/lucas/workspace/github.com/Mentoria Júlio de Lima 2.0/M2.0-Final-Project-API/test/topics.test.js",
+              "file": "/test/topics.test.js",
+              "beforeHooks": [],
+              "afterHooks": [],
+              "tests": [
+                {
+                  "title": "Should return 201 along with the newly created topic",
+                  "fullTitle": "Topics POST /topics Should return 201 along with the newly created topic",
+                  "timedOut": false,
+                  "duration": 30,
+                  "state": "passed",
+                  "speed": "fast",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "const bodyTopics = { ...postTopics};\nconst response = await request('http://localhost:3000')\n.post('/topics')\n.set('Content-Type', 'application/json')\n.send(bodyTopics);\nexpect(response.status).to.equal(201);\nexpect(response.body.name).to.equal(bodyTopics.name);\nexpect(response.body.notes).to.equal(bodyTopics.notes);",
+                  "err": {},
+                  "uuid": "9c1ee26d-a840-4a35-a3a8-aaa0edc42658",
+                  "parentUUID": "cdc2c981-357f-4c66-a5f8-8baa08c64aae",
+                  "isHook": false,
+                  "skipped": false
+                }
+              ],
+              "suites": [],
+              "passes": [
+                "9c1ee26d-a840-4a35-a3a8-aaa0edc42658"
+              ],
+              "failures": [],
+              "pending": [],
+              "skipped": [],
+              "duration": 30,
+              "root": false,
+              "rootEmpty": false,
+              "_timeout": 200000
+            },
+            {
+              "uuid": "21c1b3c3-a3ee-4469-9fd3-44c63cc3ddb4",
+              "title": "GET /topics",
+              "fullFile": "/Users/lucas/workspace/github.com/Mentoria Júlio de Lima 2.0/M2.0-Final-Project-API/test/topics.test.js",
+              "file": "/test/topics.test.js",
+              "beforeHooks": [],
+              "afterHooks": [],
+              "tests": [
+                {
+                  "title": "Should return 200 along with the list of all topics",
+                  "fullTitle": "Topics GET /topics Should return 200 along with the list of all topics",
+                  "timedOut": false,
+                  "duration": 5,
+                  "state": "passed",
+                  "speed": "fast",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "const response = await request('http://localhost:3000')\n.get('/topics')\n.set('Content-Type', 'application/json')           \nexpect(response.status).to.equal(200);\nexpect(response.body).to.be.an('array');\nexpect(response.body[3]).to.have.property('id');\nexpect(response.body[3]).to.have.property('name');",
+                  "err": {},
+                  "uuid": "d207ed71-b18f-49bc-82e1-a52979bdf90b",
+                  "parentUUID": "21c1b3c3-a3ee-4469-9fd3-44c63cc3ddb4",
+                  "isHook": false,
+                  "skipped": false
+                }
+              ],
+              "suites": [],
+              "passes": [
+                "d207ed71-b18f-49bc-82e1-a52979bdf90b"
+              ],
+              "failures": [],
+              "pending": [],
+              "skipped": [],
+              "duration": 5,
+              "root": false,
+              "rootEmpty": false,
+              "_timeout": 200000
+            }
+          ],
+          "passes": [],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 0,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 200000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 200000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "11.7.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": null,
+      "version": "6.2.0"
+    }
+  }
+}
