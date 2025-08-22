@@ -1,0 +1,54 @@
+name: Node.js CI
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Create .env file
+      run: |        
+        echo "http://localhost:3000" >> .env
+        echo "SWAGGER_URL=/api-docs" >> .env
+
+    - name: Install lsof
+      run: sudo apt-get install -y lsof
+
+    - name: Check if port is in use and kill process if needed
+      run: |
+        if lsof -i:3000; then
+          echo "Port 3000 is in use. Attempting to kill the process..."
+          lsof -i:3000 -t | xargs kill -9 || true
+        else
+          echo "Port 3000 is available"
+        fi
+
+    - name: Start server in background
+      run: npm start &
+
+    - name: Wait for server to start
+      run: |
+        echo "Waiting for server to start..."
+        sleep 10
+        echo "Checking if server is running..."
+        curl -s http://localhost:3000 || echo "Server may not be running properly"
+
+    - name: Run tests
+      id: run_tests
+      run: npm test
+      continue-on-error: true
+    - name: Run tests
+      id: run_performance_tests
+      run: K6_WEB_DASHBOARD=true K6_WEB_DASHBOARD_EXPORT=html-report.html k6 run test/performance/topics.test.js
+      continue-on-error: true
